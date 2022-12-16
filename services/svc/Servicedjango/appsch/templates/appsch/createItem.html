@@ -1,0 +1,62 @@
+{% extends "base_menu.html" %}
+{% block content %}
+<html>
+<head>
+    <title>Item Details</title>
+    <style type="text/css">
+        h1 {
+        color: #3ca686;
+    }
+    body {
+
+        background: rgb(7,13,29);
+
+        color: #c8ccd7;
+        font-size: 130%;
+    }
+    #poleschedule {
+                    background-color: #18191e;
+                    alignment: center;
+                    border-radius: 2em; /* Радиус скругления */
+    }
+    a {
+       color: #1683dc;
+    }
+    </style>
+</head>
+<body>
+    <form method="post" id="container" enctype="multipart/form-data">
+        {% csrf_token %}
+        <div id="form">
+            <label>
+                <h1> Назва продукту </h1>
+                <input type="text" name="item">
+
+                <h1> Ціна </h1>
+                <input type="number" name="price">
+                <h1> Детальніше про продукт </h1>
+                <input type="text" name="detail">
+                <div class="input-group mb-3">
+                    <div class="file-upload">
+                        <h2>Зображення</h2>
+                        {{ form.picture }}
+                    </div>
+                 </div>
+            </label>
+            <br>
+            <label>
+                <br>
+                <button class="w-100 btn btn-lg btn-primary" type="submit" value="OK"> Подтвердить изменения </button>
+            </label>
+
+        </div>
+    </form>
+
+
+    {% if item %}
+        <p> Продукт {{ item }} було успішно додано </p>
+    {% endif %}
+
+</body>
+</html>
+{% endblock %}

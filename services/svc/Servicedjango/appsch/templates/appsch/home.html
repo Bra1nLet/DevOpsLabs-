@@ -1,0 +1,58 @@
+{% extends "base_menu.html" %}
+{% block content %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Items</title>
+    <style type="text/css">
+        h1 {
+        color: #3ca686;
+    }
+    body {
+
+        background: rgb(7,13,29);
+
+        color: #c8ccd7;
+        font-size: 130%;
+    }
+    #poleschedule {
+                    background-color: #18191e;
+                    alignment: center;
+                    border-radius: 2em; /* Радиус скругления */
+    }
+    a {
+       color: #1683dc;
+    }
+    #phot {
+        width:100%;
+        max-width:300px;
+    }
+    </style>
+
+</head>
+<body>
+    {% if items %}
+        <h1>Усі продукти</h1>
+        {% for i in items %}
+            <div id="poleschedule">
+                Назва продукту: {{i.name}} <br>
+                Ціна: {{i.price}}
+                <a href="/item/{{i.id}}"> Детальніше </a>
+            </div>
+            <br>
+        {% endfor %}
+    {% endif %}
+
+    {% if item %}
+         <h1>Продукт</h1>
+        <div id="poleschedule">
+            <img id="phot" src="{{  item.picture.url }}"  >
+            <br>
+            Назва продукту: {{item.name}} <br>
+            Ціна: {{item.price}}
+        </div>
+    {% endif %}
+    <a href="/additem "> Створити предмет </a>
+</body>
+</html>
+{% endblock %}
