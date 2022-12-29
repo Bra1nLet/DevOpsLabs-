@@ -19,7 +19,9 @@ jobs:
     steps:
       - uses: actions/checkout@v3
       - name: Build image
-        run: docker build -t ${{secrets.DOCKERHUB_USER}}/djangodevops:latest -f ./services/svc/Dockerfile .
+        run: |
+          cd services/svc
+          docker build -t ${{secrets.DOCKERHUB_USER}}/djangodevops:latest .
 
   push:
     needs: build
