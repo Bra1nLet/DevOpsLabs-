@@ -42,7 +42,7 @@ jobs:
           password: ${{ secrets.DOCKERHUB_PASS }}
       - uses: actions/checkout@v3
       - name: Push image
-        run: docker push -t ${{secrets.DOCKERHUB_USER}}/djangodevops:latest 
+        run: docker push ${{secrets.DOCKERHUB_USER}}/djangodevops:latest 
 
   ping:
     needs: push
