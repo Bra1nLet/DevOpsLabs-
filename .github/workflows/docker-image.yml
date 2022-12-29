@@ -5,12 +5,19 @@ on:
     branches: [ "master" ]
   pull_request:
     branches: [ "master" ]
-
+ 
+ 
 jobs:
   lint:
+    name: Lint
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
+    - uses: actions/checkout@v2
+    - uses: tonybajan/flake8-check-action@v1.3.0
+      with:
+        select: E3,E4,E5,E7,W6,F,B,G0
+        maxlinelength: 100
+        repotoken: ${{ secrets.TOKEN_GITHUB }}
 
 
   build:
