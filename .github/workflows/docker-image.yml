@@ -40,9 +40,12 @@ jobs:
         with:
           username: ${{ secrets.DOCKERHUB_USER }}
           password: ${{ secrets.DOCKERHUB_PASS }}
-      - uses: actions/checkout@v3
-      - name: Push image
-        run: docker push ${{secrets.DOCKERHUB_USER}}/djangodevops:latest 
+      - name: Build and push
+        uses: docker/build-push-action@v3
+        with:
+          context: .
+          tags: ${{secrets.DOCKERHUB_USER}}/djangodevops:latest
+          push: true
 
   ping:
     needs: push
