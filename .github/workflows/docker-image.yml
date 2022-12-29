@@ -14,7 +14,7 @@ jobs:
     steps:
       - name: Check code
         run: |
-          cd services/svc/Servicedjango
+          cd services/svc/Servicedjango/
           python manage.py check
 
 
