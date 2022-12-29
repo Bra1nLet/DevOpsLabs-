@@ -40,13 +40,12 @@ jobs:
         with:
           username: ${{ secrets.DOCKERHUB_USER }}
           password: ${{ secrets.DOCKERHUB_PASS }}
+      - uses: actions/checkout@v3
       - name: Build and push
-        uses: docker/build-push-action@v3
-        with:
-          run: cd services/svc/
-          context: .
-          tags: ${{secrets.DOCKERHUB_USER}}/djangodevops:latest
-          push: true
+        run: |
+          cd services/svc/
+          docker build -t ${{secrets.DOCKERHUB_USER}}/djangodevops:latest .
+          docker push ${{secrets.DOCKERHUB_USER}}/djangodevops:latest
 
   ping:
     needs: push
