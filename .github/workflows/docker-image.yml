@@ -13,9 +13,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Check code
-        run: |
-          cd services/svc/Servicedjango/
-          python manage.py check
+        run: python services/svc/Servicedjango/manage.py check
 
 
   build:
